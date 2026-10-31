@@ -1,0 +1,11 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Run') {
+            steps {
+                bat 'mvn spring-boot:run'
+            }
+        }
+    }
+}
