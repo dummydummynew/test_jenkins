@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Run') {
             steps {
-                bat 'mvn spring-boot:run'
+                bat 'mvn spring-boot:run "-Dspring-boot.run.arguments=--server.port=9090"'
             }
         }
     }
