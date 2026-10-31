@@ -2,9 +2,15 @@ pipeline {
     agent any
 
     stages {
+        stage('Build') {
+            steps {
+                bat 'mvn clean package'
+            }
+        }
         stage('Run') {
             steps {
-                bat 'mvn spring-boot:run "-Dspring-boot.run.arguments=--server.port=9090"'
+                bat 'start /B java -jar target\\demo_jenkins-0.0.1-SNAPSHOT.jar --server.port=9090'
+                bat 'timeout /t 10 /nobreak'
             }
         }
     }
